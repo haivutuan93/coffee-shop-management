@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authorization
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authorization
+  template:
+    metadata:
+      name: authorization
+      labels:
+        app: authorization
+    spec:
+      containers:
+        - image: $CI_DOCKER_REGISTRY/$CI_DOCKER_REPOSITORY/authorization:$CI_IID
+          name: authorization
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8085
+  strategy:
+    type: Recreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authorization
+  namespace: dev
+
+spec:
+  selector:
+    app: authorization
+  type: ClusterIP
+
+  ports:
+    - name: authorization
+      port: 8085
+      targetPort: 8085
+      protocol: TCP

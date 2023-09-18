@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shop
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shop
+  template:
+    metadata:
+      name: shop
+      labels:
+        app: shop
+    spec:
+      containers:
+        - image: $CI_DOCKER_REGISTRY/$CI_DOCKER_REPOSITORY/shop:$CI_IID
+          name: shop
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8085
+  strategy:
+    type: Recreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shop
+  namespace: dev
+
+spec:
+  selector:
+    app: shop
+  type: ClusterIP
+
+  ports:
+    - name: shop
+      port: 8085
+      targetPort: 8085
+      protocol: TCP

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user
+  template:
+    metadata:
+      name: user
+      labels:
+        app: user
+    spec:
+      containers:
+        - image: $CI_DOCKER_REGISTRY/$CI_DOCKER_REPOSITORY/user:$CI_IID
+          name: user
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8085
+  strategy:
+    type: Recreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user
+  namespace: dev
+
+spec:
+  selector:
+    app: user
+  type: ClusterIP
+
+  ports:
+    - name: user
+      port: 8085
+      targetPort: 8085
+      protocol: TCP
