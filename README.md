@@ -19,8 +19,11 @@ Here are the Swagger documentation links for each service:
 - **Shop-service**: [Swagger UI](http://35.213.152.229:8086/swagger-ui/index.html)
 - **Authorization-service**: [Swagger UI](http://35.213.152.229:8086/swagger-ui/index.html)
 
-  API available for test
-  ![API](https://github.com/haivutuan93/coffee-shop-management/blob/develop/image/Screenshot%202023-09-18%20at%2022.10.35.png?raw=true)
+  APIs ready for testing
+  - API User Login
+![API Login for User](https://github.com/haivutuan93/coffee-shop-management/blob/develop/image/Screenshot%202023-09-19%20at%2000.16.17.png?raw=true)
+  - API for Customer to make new an Order
+  ![API for Customer to make new Order](https://github.com/haivutuan93/coffee-shop-management/blob/develop/image/Screenshot%202023-09-18%20at%2022.10.35.png?raw=true)
 
 ### Common Library
 
