@@ -9,6 +9,7 @@ This system is designed to manage various aspects of coffee shops, including use
 - **Authorization Service**: This service is responsible for generating and validating tokens, as well as checking user permissions. It is crucial for securing the application and ensuring only authorized users can access certain functionalities
 - **User Service**: Handles user and shop owner/admin authentication. It manages user credentials and roles.
 - **Shop Service**: Manages all aspects related to shops, including information details and order management.
+- **Common Library**: Contains utility classes, exception handling mechanisms, and other reusable components
 
 
 ## Getting Started
@@ -24,15 +25,6 @@ Here are the Swagger documentation links for each service:
 ![API Login for User](https://github.com/haivutuan93/coffee-shop-management/blob/develop/image/Screenshot%202023-09-19%20at%2000.16.17.png?raw=true)
   - API for Customer to make new an Order
   ![API for Customer to make new Order](https://github.com/haivutuan93/coffee-shop-management/blob/develop/image/Screenshot%202023-09-18%20at%2022.10.35.png?raw=true)
-
-### Common Library
-
-Before running any service, make sure to build the common library:
-
-```bash
-cd common-library
-mvn clean install
-```
 
 
 ## Kubernetes Deployment
